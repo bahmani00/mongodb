@@ -31,3 +31,21 @@ bash-5.0# show collections
 person
 
 --------------
+db.createUser({
+   user: "dan",
+   pwd: "1234",
+   roles: ["readWrite", "dbAdmin"]
+});
+
+Successfully added user { user: "dan", pwd: "1234", roles: ["readWrite", "dbAdmin"] }
+
+--------------
+db.person.insert({first_name: "John", last_name: "Doe"})
+
+to add Gender to John:
+
+db.person.update({first_name: "John"}, {last_name: "Doe"}, {first_name: "John", last_name: "Doe", gender: "male"})
+
+or simpler:
+
+db.person.update({first_name: "John"}, {$set: {gender: "male"}})
